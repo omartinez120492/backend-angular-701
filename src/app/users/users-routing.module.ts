@@ -6,8 +6,10 @@ import { RouterModule, Routes } from '@angular/router';
 //TODO: nuestras importaciones
 import { CreateComponent } from './pages/create/create.component';
 import { LayoutComponent } from './layout/layout.component';
-import { UsersComponent } from './users.component';
 import { DeleteComponent } from './pages/delete/delete.component';
+import { HomeComponent } from './pages/home/home.component';
+import { ListComponent } from './pages/list/list.component';
+
 
 
 const routes: Routes = [
@@ -25,8 +27,12 @@ const routes: Routes = [
       },
       {
         path:'list',
-        component: UsersComponent
+        component: ListComponent
       },
+      {
+        path:'users',
+        component: HomeComponent
+      }
     ],
   }
 ];

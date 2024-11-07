@@ -1,0 +1,11 @@
+<h5 class="text-primary text-center"> Menu </h5>
+<hr class="text-primary">
+<ul class="list-group">
+    <li 
+        *ngFor="let user of menuUsers; index as i"
+        class="list-group-item"
+        [routerLink]="user.path"
+    >
+        {{user.titulo}}
+    </li>
+</ul>
