@@ -1,1 +1,88 @@
-<p>create works!</p>
+<h4 class="text-center text-primary alert">Ingrese los datos del formulario</h4>
+<div class="container row">
+    <div class="col-4">
+        <div>
+            <span>formulario: </span>
+            <span> {{ userForm.valid }} </span>
+        </div>
+        <hr>
+        <div>
+            <span>nombre:</span>
+            <span> {{ userForm.get('nombre')?.errors | json }} </span>
+        </div>
+        <hr>
+        <div>
+            <span>apellid paterno:</span>
+            <span> {{ userForm.get('apellido_paterno')?.errors | json }} </span>
+        </div>
+        <hr>
+        <div>
+            <span>apellid materno:</span>
+            <span> {{ userForm.get('apellido_materno')?.errors | json }} </span>
+        </div><hr>
+        <div>
+            <span>edad:</span>
+            <span> {{ userForm.get('edad')?.errors | json }} </span>
+        </div><hr>
+        <div>
+            <span>email:</span>
+            <span> {{ userForm.get('email')?.errors | json }} </span>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <form [formGroup]="userForm" (ngSubmit)="saveUser()" autocomplete="off">
+            <label class="form-label" for="nombre">Nombre</label>
+            <input class="form-control" 
+                type="text" 
+                name="nombre" 
+                id="nombre"
+                formControlName="nombre"
+                [class.is-invalid]=" isValidField('nombre') "
+            >
+            <p *ngIf="isValidField('nombre')" class="text-danger">
+                {{ getErrorsField('nombre') }}
+            </p>
+
+            <label class="form-label mt-2" for="ape_pat">Apellido paterno</label>
+            <input class="form-control" 
+                type="text" 
+                name="apellido_paterno" 
+                id="ape_pat"
+                formControlName="apellido_paterno"
+                [class.is-invalid]=" isValidField('apellido_paterno') "
+                >
+
+            <label class="form-label mt-2" for="ape_mat">Apellido materno</label>
+            <input class="form-control" 
+                type="text" 
+                name="apellido_materno" 
+                id="ape_mat"
+                formControlName="apellido_materno"
+                [class.is-invalid]=" isValidField('apellido_materno') "
+                >
+
+            <label class="form-label mt-2" for="edad">Edad</label>
+            <input class="form-control" 
+                type="number" 
+                name="edad" 
+                id="edad"
+                formControlName="edad"
+                [class.is-invalid]=" isValidField('edad') "
+                >
+
+            <label class="form-label mt-2" for="email">Email</label>
+            <input class="form-control" 
+                type="text" 
+                name="email" 
+                id="email"
+                formControlName="email"
+                [class.is-invalid]=" isValidField('email') "
+                >
+            <div class="d-grid gap-2">
+                <input class="btn btn-outline-primary mt-2" type="submit" value="Crear">
+            </div>
+        </form>
+    </div>
+    <div class="col-4"></div>
+</div>
