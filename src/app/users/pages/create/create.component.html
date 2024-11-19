@@ -51,8 +51,10 @@
                 id="ape_pat"
                 formControlName="apellido_paterno"
                 [class.is-invalid]=" isValidField('apellido_paterno') "
-                >
-
+            >
+            <p *ngIf="isValidField('apellido_paterno')" class="text-danger">
+                {{ getErrorsField('apellido_paterno') }}
+            </p>
             <label class="form-label mt-2" for="ape_mat">Apellido materno</label>
             <input class="form-control" 
                 type="text" 
@@ -61,7 +63,9 @@
                 formControlName="apellido_materno"
                 [class.is-invalid]=" isValidField('apellido_materno') "
                 >
-
+                <p *ngIf="isValidField('apellido_materno')" class="text-danger">
+                    {{ getErrorsField('apellido_materno') }}
+                </p>
             <label class="form-label mt-2" for="edad">Edad</label>
             <input class="form-control" 
                 type="number" 
@@ -70,7 +74,9 @@
                 formControlName="edad"
                 [class.is-invalid]=" isValidField('edad') "
                 >
-
+                <p *ngIf="isValidField('edad')" class="text-danger">
+                    {{ getErrorsField('edad') }}
+                </p> 
             <label class="form-label mt-2" for="email">Email</label>
             <input class="form-control" 
                 type="text" 
@@ -79,6 +85,9 @@
                 formControlName="email"
                 [class.is-invalid]=" isValidField('email') "
                 >
+                <p *ngIf="isValidField('email')" class="text-danger">
+                    {{ getErrorsField('email') }}
+                </p> 
             <div class="d-grid gap-2">
                 <input class="btn btn-outline-primary mt-2" type="submit" value="Crear">
             </div>

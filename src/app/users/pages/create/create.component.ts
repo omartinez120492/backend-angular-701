@@ -12,6 +12,7 @@ export class CreateComponent {
   public userForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
+
     this.userForm = this.formBuilder.group({
       nombre: ['Omar', [Validators.minLength(3), Validators.required]],
       apellido_paterno: ['', [Validators.minLength(3), Validators.required]],
@@ -19,7 +20,9 @@ export class CreateComponent {
       edad: [18, [Validators.min(18), Validators.required]],
       email: ['', [Validators.email]]
     });
+
   }
+
 
 
   public isValidField( field:string  ): boolean | null {
@@ -27,12 +30,10 @@ export class CreateComponent {
   }
 
   public getErrorsField( field: string ): string | null {
-    if( !this.userForm.controls[field] ) return '';//
-
+    if( !this.userForm.controls[field] ) return '';
     const errores = this.userForm.controls[field].errors || {};
-
-    for( const key of Object.keys(errores) ){
-      switch(key){
+    for( const property of Object.keys(errores) ){
+      switch(property){
         case 'required':
           return 'Campo requerido'
         case 'minlength':
